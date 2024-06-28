@@ -8,25 +8,28 @@ import java.time.LocalDate;
 public class CourseRegistration {
 
   @Id
-  @Column
+  @Column(name = "coursesRegistrarion_id")
   private Long id;
   @Column
   private LocalDate registerDate;
   @Column
   private LocalDate unregisterDate;
-  @Column
-  @OneToOne
-  @JoinColumn(name = "student_id", referencedColumnName = "student_id")
-  private Students students;
-  @Column
-  private Courses courses;
 
-  public CourseRegistration(Long id, LocalDate registerDate, LocalDate unregisterDate, Students students, Courses courses) {
+  @ManyToOne
+  @JoinColumn(name = "student_id", referencedColumnName = "student_id")
+  private Student student;
+
+ // @Column
+//  @ManyToOne
+//  @JoinColumn(name = "courses_id", referencedColumnName = "courses_id")
+//  private Courses courses;
+
+  public CourseRegistration(Long id, LocalDate registerDate, LocalDate unregisterDate, Student student) {
     this.id = id;
     this.registerDate = registerDate;
     this.unregisterDate = unregisterDate;
-    this.students = students;
-    this.courses = courses;
+    this.student = student;
+    //this.courses = courses;
   }
 
   public CourseRegistration() {
@@ -44,11 +47,8 @@ public class CourseRegistration {
     return unregisterDate;
   }
 
-  public Students getStudents() {
-    return students;
+  public Student getStudents() {
+    return student;
   }
 
-  public Courses getCourses() {
-    return courses;
-  }
 }

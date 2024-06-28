@@ -22,22 +22,17 @@ public class Courses {
   @Column
   private String subject;
 
-  @Column
-  @OneToOne(mappedBy = "Teacher")
+  @ManyToOne
   @JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")
   private Teacher teacher;
 
-  @Column
-  @OneToMany(mappedBy = "Students", cascade = CascadeType.ALL)
-  private List<Students> students = new ArrayList<>();
 
-  public Courses(Long id, String name, String description, String subject, Teacher teacher, List<Students> students) {
+  public Courses(Long id, String name, String description, String subject, Teacher teacher) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.subject = subject;
     this.teacher = teacher;
-    this.students = students;
   }
 
   public Courses() {
@@ -63,7 +58,4 @@ public class Courses {
     return teacher;
   }
 
-  public List<Students> getStudents() {
-    return students;
-  }
 }

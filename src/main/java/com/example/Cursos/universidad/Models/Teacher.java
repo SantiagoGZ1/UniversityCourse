@@ -3,6 +3,7 @@ package com.example.Cursos.universidad.Models;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,9 @@ public class Teacher {
 
   @Column
   private LocalDate startWork;
+
+  @OneToMany(mappedBy = "teacher")
+  private  List<Courses> courses = new ArrayList<>();
 
 
   public Teacher(Long id, String name, String lastName, List<String> academyTitles, LocalDate startWork) {
