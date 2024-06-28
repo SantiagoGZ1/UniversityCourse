@@ -21,6 +21,7 @@ public class StudentService {
   //Logica
 
   public void createStudent (Student student){
+
     this.studentsRepo.save(student);
   }
 
@@ -49,7 +50,8 @@ public class StudentService {
 
   //update
   public Student updateStudent(Long id, Student student){
-    Optional<Student> studentOptional = this.studentsRepo.findById(id);
+    Optional<Student> studentOptional =this.studentsRepo.findById(id);
+
     if(studentOptional.isPresent()){
       studentOptional.map(student1 -> {
         student1.setName(student.getName());
@@ -57,8 +59,10 @@ public class StudentService {
         student1.setBirthdate(student.getBirthdate());
         return studentsRepo.save(student1);
       });
+    }else {
+      System.out.println("No se encontró el muchacho");
+      return new Student();
     }
-    System.out.println("No se encontró el muchacho");
-    return new Student();
+    return student;
   }
 }

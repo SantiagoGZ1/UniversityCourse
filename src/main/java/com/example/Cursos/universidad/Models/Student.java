@@ -19,12 +19,12 @@ public class Student {
   @Column
   private String lastName;
   @Column
-  private String birthdate;
+  private LocalDate birthdate;
 
   @OneToMany(mappedBy = "student")
   private List<CourseRegistration> courseRegistration = new ArrayList<>();
 
-  public Student(Long id, String name, String lastName, String birthdate) {
+  public Student(Long id, String name, String lastName, LocalDate birthdate) {
     this.id = id;
     this.name = name;
     this.lastName = lastName;
@@ -54,7 +54,7 @@ public class Student {
     return lastName;
   }
 
-  public String getBirthdate() {
+  public LocalDate getBirthdate() {
     return birthdate;
   }
 
@@ -70,7 +70,7 @@ public class Student {
     this.lastName = lastName;
   }
 
-  public void setBirthdate(String birthdate) {
+  public void setBirthdate(LocalDate birthdate) {
     this.birthdate = birthdate;
   }
 
