@@ -60,4 +60,28 @@ public class Teacher {
   public LocalDate getStartWork() {
     return startWork;
   }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setAcademyTitles(List<String> academyTitles) {
+    this.academyTitles = academyTitles;
+  }
+
+  public void setStartWork(LocalDate startWork) {
+    this.startWork = startWork;
+  }
+
+  public void setCourses(List<Courses> courses) {
+    this.courses = courses;
+  }
 }
