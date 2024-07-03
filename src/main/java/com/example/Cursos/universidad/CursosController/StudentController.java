@@ -28,7 +28,7 @@ public class StudentController {
       this.studentService.createStudent(student);
       return ResponseEntity.ok("Se creó el estudiante");
     }catch (Exception e){ //el mensaje del error del exception
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: No se pudo crear el estudiate" + e.getMessage());
+      return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Error: No se pudo crear el estudiate " + e.getMessage());
     }
   }
   @GetMapping("/{id_student}")

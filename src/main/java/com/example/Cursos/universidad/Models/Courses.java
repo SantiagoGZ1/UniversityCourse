@@ -58,4 +58,19 @@ public class Courses {
     return teacher;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
+
+  public void setTeacher(Teacher teacher) {
+    this.teacher = teacher;
+  }
 }

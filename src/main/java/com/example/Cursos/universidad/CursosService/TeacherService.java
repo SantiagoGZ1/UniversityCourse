@@ -38,10 +38,11 @@ public class TeacherService {
   public List<Teacher> getAllTeachers(){
     return this.teachersRepo.findAll();
   }
+
   public void deleteTeacher(Long id){
     Optional<Teacher> teacherOptional = this.teachersRepo.findById(id);
     if (teacherOptional.isEmpty()){
-      System.out.println("The student does not exist");
+      System.out.println("Teacher does not exist");
     }else{
       this.teachersRepo.delete(teacherOptional.get());
     }
@@ -58,7 +59,7 @@ public class TeacherService {
       return teachersRepo.save(teacherToUpdate);
 
     }else{
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Teacher not found");
     }
   }
 }

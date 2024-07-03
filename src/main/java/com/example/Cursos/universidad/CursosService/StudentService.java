@@ -23,7 +23,13 @@ public class StudentService {
   //Basic Logic
 
   public void createStudent (Student student){
-    this.studentsRepo.save(student);
+
+    if(student.getBirthdate().getYear() <= 2006){
+      this.studentsRepo.save(student);
+    } else {
+      throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Sorry, student is too young");
+    }
+
   }
 
   public Student getStudent (Long id){
@@ -54,9 +60,23 @@ public class StudentService {
     Optional<Student> studentOptional = this.studentsRepo.findById(id);
     if (studentOptional.isPresent()) {
       Student studentToUpdate = studentOptional.get();
+      if(student.getName() == null){
+        studentToUpdate.setName(studentToUpdate.getName());
+      } else {
       studentToUpdate.setName(student.getName());
+      }
+
+      if(student.getLastName() == null){
+        studentToUpdate.setLastName(studentToUpdate.getLastName());
+      } else {
       studentToUpdate.setLastName(student.getLastName());
+      }
+
+      if(student.getBirthdate() == null){
+        studentToUpdate.setBirthdate(studentToUpdate.getBirthdate());
+      } else {
       studentToUpdate.setBirthdate(student.getBirthdate());
+      }
       return studentsRepo.save(studentToUpdate);
     } else {
       // Lanzar una excepción en lugar de devolver un nuevo Student vacío
