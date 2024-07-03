@@ -26,6 +26,9 @@ public class Courses {
   @JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")
   private Teacher teacher;
 
+  @OneToMany(mappedBy = "courses")
+  private List<Registration> courseRegistration = new ArrayList<>();
+
 
   public Courses(Long id, String name, String description, String subject, Teacher teacher) {
     this.id = id;

@@ -31,13 +31,13 @@ public class Student {
     this.birthdate = birthdate;
   }
 
-//  public Student(Long id, String name, String lastName, LocalDate birthdate, CourseRegistration courseRegistration) {
-//    this.id = id;
-//    this.name = name;
-//    this.lastName = lastName;
-//    this.birthdate = birthdate;
-//    this.courseRegistration = courseRegistration;
-//  }
+  public Student(Long id, String name, String lastName, LocalDate birthdate, List<Registration> registration) {
+    this.id = id;
+    this.name = name;
+    this.lastName = lastName;
+    this.birthdate = birthdate;
+    this.courseRegistration = registration;
+ }
 
   public Student() {
   }

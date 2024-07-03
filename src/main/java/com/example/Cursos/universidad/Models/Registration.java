@@ -19,17 +19,23 @@ public class Registration {
   @JoinColumn(name = "student_id", referencedColumnName = "student_id")
   private Student student;
 
- // @Column
-//  @ManyToOne
-//  @JoinColumn(name = "courses_id", referencedColumnName = "courses_id")
-//  private Courses courses;
+  @ManyToOne
+  @JoinColumn(name = "courses_id", referencedColumnName = "courses_id")
+  private Courses courses;
 
-  public Registration(Long id, LocalDate registerDate, LocalDate unregisterDate, Student student) {
+  public Registration(Long id, LocalDate registerDate, LocalDate unregisterDate, Student student, Courses courses) {
     this.id = id;
     this.registerDate = registerDate;
     this.unregisterDate = unregisterDate;
-    this.student = student;
-    //this.courses = courses;
+    this.student = student; //2
+    this.courses = courses;
+  }
+
+  public Registration(Long id, LocalDate registerDate, LocalDate unregisterDate, Courses courses) {
+    this.id = id;
+    this.registerDate = registerDate;
+    this.unregisterDate = unregisterDate;
+    this.courses = courses;
   }
 
   public Registration() {

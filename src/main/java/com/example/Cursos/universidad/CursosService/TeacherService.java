@@ -1,6 +1,5 @@
 package com.example.Cursos.universidad.CursosService;
 
-import com.example.Cursos.universidad.Models.Student;
 import com.example.Cursos.universidad.Models.Teacher;
 import com.example.Cursos.universidad.Repo.TeachersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.swing.text.html.Option;
+
 import java.util.List;
 import java.util.Optional;
 @Service
