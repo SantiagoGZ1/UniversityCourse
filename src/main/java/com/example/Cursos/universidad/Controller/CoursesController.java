@@ -3,6 +3,7 @@ package com.example.Cursos.universidad.Controller;
 
 import com.example.Cursos.universidad.Service.CoursesService;
 import com.example.Cursos.universidad.Models.Courses;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ public class CoursesController {
 
     private CoursesService coursesService;
 
+    @Autowired
     public CoursesController(CoursesService coursesService) {
         this.coursesService = coursesService;
     }

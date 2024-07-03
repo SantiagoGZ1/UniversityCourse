@@ -9,6 +9,7 @@ public class Registration {
 
   @Id
   @Column(name = "coursesRegistrarion_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column
   private LocalDate registerDate;
@@ -27,7 +28,7 @@ public class Registration {
     this.id = id;
     this.registerDate = registerDate;
     this.unregisterDate = unregisterDate;
-    this.student = student; //2
+    this.student = student;
     this.courses = courses;
   }
 
@@ -73,4 +74,7 @@ public class Registration {
     return student;
   }
 
+  public Courses getCourses() {
+    return courses;
+  }
 }

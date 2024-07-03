@@ -19,8 +19,6 @@ public class RegistrationService {
     private StudentsRepo studentsRepo;
     private RegistrationRepo registrationRepo;
 
-    private int contRegistration = 0;
-
     @Autowired
     public RegistrationService(RegistrationRepo registrationRepo) {
         this.registrationRepo = registrationRepo;
@@ -32,10 +30,7 @@ public class RegistrationService {
 
     public Registration getRegistration(Long id){
         Optional<Registration> registrationOptional = this.registrationRepo.findById(id);
-        if(registrationOptional.isPresent()){
-            return registrationOptional.get();
-        }
-        return new Registration();
+        return registrationOptional.orElseGet(Registration::new);
     }
 
     public List<Registration> getAllRegistration(){
@@ -43,25 +38,24 @@ public class RegistrationService {
     }
 
 
-    public Registration updateRegistration(Long id, Registration registration) throws Exception {
+    public Registration updateRegistration(Long id, Registration registration) {
         Optional<Registration> registrationOptional = this.registrationRepo.findById(id);
         if(registrationOptional.isPresent()){
             Registration registrationToUpdate = registrationOptional.get();
             if(registration.getRegisterDate() != null){
                 registrationToUpdate.setRegisterDate(registration.getRegisterDate());
             }
-            if(registration.getUnregisterDate() != null && contRegistration < 1){
-                contRegistration++;
+            if(registrationToUpdate.getUnregisterDate() == null){
                 registrationToUpdate.setUnregisterDate(registration.getUnregisterDate());
             } else {
-                throw new Exception("cannot update");
+                throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Cannot be update");
             }
             if(registration.getStudents() != null){
                 Optional<Student> studentFind = this.studentsRepo.findById(registration.getStudents().getId());
                 if(studentFind.isPresent()){
                 registrationToUpdate.setStudent(registration.getStudents());
                 }else {
-                    throw new Exception("Student not found");
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
                 }
             }
             return registrationRepo.save(registrationToUpdate);
