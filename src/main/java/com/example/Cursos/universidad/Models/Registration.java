@@ -58,6 +58,10 @@ public class Registration {
     this.student = student;
   }
 
+  public void setCourses(Courses courses) {
+    this.courses = courses;
+  }
+
   public Long getId() {
     return id;
   }

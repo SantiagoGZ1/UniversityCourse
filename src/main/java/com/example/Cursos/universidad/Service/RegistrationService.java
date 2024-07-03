@@ -45,11 +45,14 @@ public class RegistrationService {
             if(registration.getRegisterDate() != null){
                 registrationToUpdate.setRegisterDate(registration.getRegisterDate());
             }
+            if(registrationToUpdate.getCourses() == null){
+                registrationToUpdate.setCourses(registration.getCourses());
+            } else {
+                registrationToUpdate.setCourses(registrationToUpdate.getCourses());
+            }
             if(registrationToUpdate.getUnregisterDate() == null){
                 registrationToUpdate.setUnregisterDate(registration.getUnregisterDate());
-            } else {
-                throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Cannot be update");
-            }
+            } 
             if(registration.getStudents() != null){
                 Optional<Student> studentFind = this.studentsRepo.findById(registration.getStudents().getId());
                 if(studentFind.isPresent()){
