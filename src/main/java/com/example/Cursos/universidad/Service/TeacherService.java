@@ -1,4 +1,4 @@
-package com.example.Cursos.universidad.CursosService;
+package com.example.Cursos.universidad.Service;
 
 import com.example.Cursos.universidad.Models.Teacher;
 import com.example.Cursos.universidad.Repo.TeachersRepo;

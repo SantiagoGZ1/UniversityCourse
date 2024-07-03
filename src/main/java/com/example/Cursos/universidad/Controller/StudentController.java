@@ -1,10 +1,9 @@
-package com.example.Cursos.universidad.CursosController;
+package com.example.Cursos.universidad.Controller;
 
-import com.example.Cursos.universidad.CursosService.StudentService;
+import com.example.Cursos.universidad.Service.StudentService;
 import com.example.Cursos.universidad.Models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

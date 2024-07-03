@@ -1,12 +1,10 @@
-package com.example.Cursos.universidad.CursosService;
+package com.example.Cursos.universidad.Service;
 
 import com.example.Cursos.universidad.Models.Courses;
-import com.example.Cursos.universidad.Models.Teacher;
 import com.example.Cursos.universidad.Repo.CoursesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
