@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table
-public class CourseRegistration {
+public class Registration {
 
   @Id
   @Column(name = "coursesRegistrarion_id")
@@ -24,7 +24,7 @@ public class CourseRegistration {
 //  @JoinColumn(name = "courses_id", referencedColumnName = "courses_id")
 //  private Courses courses;
 
-  public CourseRegistration(Long id, LocalDate registerDate, LocalDate unregisterDate, Student student) {
+  public Registration(Long id, LocalDate registerDate, LocalDate unregisterDate, Student student) {
     this.id = id;
     this.registerDate = registerDate;
     this.unregisterDate = unregisterDate;
@@ -32,7 +32,23 @@ public class CourseRegistration {
     //this.courses = courses;
   }
 
-  public CourseRegistration() {
+  public Registration() {
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public void setRegisterDate(LocalDate registerDate) {
+    this.registerDate = registerDate;
+  }
+
+  public void setUnregisterDate(LocalDate unregisterDate) {
+    this.unregisterDate = unregisterDate;
+  }
+
+  public void setStudent(Student student) {
+    this.student = student;
   }
 
   public Long getId() {

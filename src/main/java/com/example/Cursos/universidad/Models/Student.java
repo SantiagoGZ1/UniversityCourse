@@ -22,7 +22,7 @@ public class Student {
   private LocalDate birthdate;
 
   @OneToMany(mappedBy = "student")
-  private List<CourseRegistration> courseRegistration = new ArrayList<>();
+  private List<Registration> courseRegistration = new ArrayList<>();
 
   public Student(Long id, String name, String lastName, LocalDate birthdate) {
     this.id = id;

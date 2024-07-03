@@ -60,22 +60,16 @@ public class StudentService {
     Optional<Student> studentOptional = this.studentsRepo.findById(id);
     if (studentOptional.isPresent()) {
       Student studentToUpdate = studentOptional.get();
-      if(student.getName() == null){
-        studentToUpdate.setName(studentToUpdate.getName());
-      } else {
-      studentToUpdate.setName(student.getName());
+      if(student.getName() != null) {
+        studentToUpdate.setName(student.getName());
       }
 
-      if(student.getLastName() == null){
-        studentToUpdate.setLastName(studentToUpdate.getLastName());
-      } else {
-      studentToUpdate.setLastName(student.getLastName());
+      if(student.getLastName() != null){
+        studentToUpdate.setLastName(student.getLastName());
       }
 
-      if(student.getBirthdate() == null){
-        studentToUpdate.setBirthdate(studentToUpdate.getBirthdate());
-      } else {
-      studentToUpdate.setBirthdate(student.getBirthdate());
+      if(student.getBirthdate() != null){
+        studentToUpdate.setBirthdate(student.getBirthdate());
       }
       return studentsRepo.save(studentToUpdate);
     } else {
