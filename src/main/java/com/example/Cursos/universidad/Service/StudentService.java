@@ -1,5 +1,6 @@
 package com.example.Cursos.universidad.Service;
 
+import com.example.Cursos.universidad.Exceptions.GeneralException;
 import com.example.Cursos.universidad.Models.Student;
 import com.example.Cursos.universidad.Repo.StudentsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,10 @@ public class StudentService {
   //Basic Logic
 
   public void createStudent (Student student){
-
     if(student.getBirthdate().getYear() <= 2006){
       this.studentsRepo.save(student);
     } else {
-      throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Sorry, student is too young");
+      throw new GeneralException("Holi, estamos intentando sin éxito hacer esto");
     }
 
   }
@@ -37,19 +37,18 @@ public class StudentService {
     if(studentOptional.isPresent()){
       return studentOptional.get();
     }
-    return new Student();
+    throw new GeneralException("Holi, estamos intentando sin éxito hacer esto");
   }
 
   //gest lista
   public List<Student> getAllStudents (){
     return this.studentsRepo.findAll();
   }
-
   //delete
   public void deleteStudent (Long id){
     Optional<Student> studentOptional = this.studentsRepo.findById(id);
     if(studentOptional.isEmpty()){
-      System.out.println("The student does not exist");
+      throw new GeneralException("Holi, estamos intentando sin éxito hacer esto");
     }else {
       this.studentsRepo.delete(studentOptional.get());
     }
@@ -74,7 +73,7 @@ public class StudentService {
       return studentsRepo.save(studentToUpdate);
     } else {
       // Lanzar una excepción en lugar de devolver un nuevo Student vacío
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
+      throw new GeneralException("Holi, estamos intentando sin éxito hacer esto");
     }
   }
 

@@ -1,6 +1,8 @@
 package com.example.Cursos.universidad.Service;
 
 
+import com.example.Cursos.universidad.Exceptions.GeneralException;
+import com.example.Cursos.universidad.Models.Courses;
 import com.example.Cursos.universidad.Models.Registration;
 import com.example.Cursos.universidad.Models.Student;
 import com.example.Cursos.universidad.Repo.RegistrationRepo;
@@ -18,6 +20,7 @@ public class RegistrationService {
 
     private StudentsRepo studentsRepo;
     private RegistrationRepo registrationRepo;
+    private Courses courses;
 
     @Autowired
     public RegistrationService(RegistrationRepo registrationRepo) {
@@ -25,8 +28,19 @@ public class RegistrationService {
     }
 
     public void createRegistration(Registration registration){
-        this.registrationRepo.save(registration);
+        if(courses.getId() == registration.getCourses().getId()){
+            if (courses.getCupos() > 0){
+                courses.descontador();
+                this.registrationRepo.save(registration);
+            }else {
+                throw new GeneralException("Max student reached");
+            }
+        }else{
+            throw new GeneralException("Course is not exist");
+        }
+
     }
+
 
     public Registration getRegistration(Long id){
         Optional<Registration> registrationOptional = this.registrationRepo.findById(id);

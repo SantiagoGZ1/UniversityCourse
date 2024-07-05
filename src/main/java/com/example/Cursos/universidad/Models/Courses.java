@@ -31,14 +31,23 @@ public class Courses {
   @OneToMany(mappedBy = "courses")
   private List<Registration> courseRegistration = new ArrayList<>();
 
+  private int cupos;
 
-  public Courses(Long id, String name, String description, String subject, Teacher teacher) {
+
+  public Courses(Long id, String name, String description, String subject, Teacher teacher, int cupos) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.subject = subject;
     this.teacher = teacher;
+    this.cupos = cupos;
   }
+
+
+  public void descontador (){
+    setCupos(cupos);
+  }
+
 
   public Courses() {
   }
@@ -61,6 +70,14 @@ public class Courses {
 
   public Teacher getTeacher() {
     return teacher;
+  }
+
+  public int getCupos() {
+    return cupos;
+  }
+
+  public void setCupos(int cupos) {
+    this.cupos = cupos--;
   }
 
   public void setName(String name) {
