@@ -27,7 +27,7 @@ public class StudentService {
     if(student.getBirthdate().getYear() <= 2006){
       this.studentsRepo.save(student);
     } else {
-      throw new GeneralException("Holi, estamos intentando sin éxito hacer esto");
+      throw new GeneralException("You are a minor, you can't enter university");
     }
 
   }
