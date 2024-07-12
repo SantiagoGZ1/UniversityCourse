@@ -1,0 +1,10 @@
+@startuml
+class Vuelo{
+-String-id
+-codigo
+-aerolinea
+
+}
+
+
+@enduml

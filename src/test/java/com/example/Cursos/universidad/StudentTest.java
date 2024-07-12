@@ -118,4 +118,29 @@ public class StudentTest {
     assertEquals("Holi, estamos intentando sin éxito hacer esto", e.getMessage());
 
   }
+
+  @Test
+  public void updateStudent() {
+    Student student = new Student(1223L,"Jose", "maria", LocalDate.of(2007,1,12));
+
+    when(studentsRepo.findById(student.getId())).thenReturn(Optional.of(student));
+
+    student.setName("Samuel");
+    studentService.updateStudent(student.getId(), student);
+
+
+    verify(studentsRepo, times(1)).findById(student.getId());
+    verify(studentsRepo, times(1)).save(student);
+
+  }
+
+  @Test
+  public void cantUpdate(){
+    Student student = new Student(1223L,"Jose", "maria", LocalDate.of(2007,1,12));
+
+    Exception e = assertThrows(GeneralException.class, () -> this.studentService.updateStudent(student.getId(), student));
+
+    assertEquals("Holi, estamos intentando sin éxito hacer esto", e.getMessage());
+  }
+
 }
